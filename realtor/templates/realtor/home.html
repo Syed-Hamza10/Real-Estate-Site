@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Home
+{% endblock title  %}
+
+{% block content %}
+
+
+<div class="container">
+    <a href="{% url 'realtor:new_property' %}" class="btn btn-danger">Add Property</a>
+    <hr>
+    <form method="get" class="form-inline mb-3">
+        <div class="form-group">
+            <label for="purpose-filter" class="mr-2">Filter by Purpose:</label>
+            <select name="purpose" id="purpose-filter" class="form-control">
+                <option value="">All</option>
+                <option value="For Rent">For Rent</option>
+                <option value="For Sale">For Sale</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary ml-2">Apply Filter</button>
+    </form>
+    
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4">
+            <div class="card shadow-sm"> <!-- Add 'shadow-sm' class for subtle shadow -->
+                <img class="card-img-top" src="{{ property.main_image.url }}" alt="Profile picture" width="300" height="400">
+                <div class="card-body">
+                    <h5 class="card-title">{{ property.title }}</h5>
+                    <a href="{% url 'realtor:detail' property.id %}" class="btn btn-primary">View Property</a>
+                </div>
+            </div>
+            <p></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

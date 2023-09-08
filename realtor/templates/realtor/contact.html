@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Contact US!</h1>
+    <form method="post">
+        <div class="form-group">
+            {{ form.Name.label_tag }}
+            <input type="text" class="form-control" name="{{ form.Name.name }}">
+        </div>
+        <div class="form-group">
+            {{ form.Email.label_tag }}
+            <input type="email" class="form-control" name="{{ formEemail.name }}">
+        </div>
+        {% comment %} <div class="form-group">
+            {{ form.verify_email.label_tag }}
+            <input type="email" class="form-control" name="{{ form.verify_email.name }}">
+        </div> {% endcomment %}
+        <div class="form-group">
+            {{ form.Message.label_tag }}
+            <textarea class="form-control" name="{{ form.Message.name }}"></textarea>
+        </div>
+
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <hr>
+{% endblock %}
+

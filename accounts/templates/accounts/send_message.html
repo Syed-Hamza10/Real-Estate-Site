@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Send Message {{ recipient.username }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="content">Message:</label>
+      <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+  {% if recipient %}
+    <a href="{% url 'accounts:chat_with' recipient_id=recipient.id %}">Back to Chat</a>
+{% endif %}
+
+  
+{% endblock %}

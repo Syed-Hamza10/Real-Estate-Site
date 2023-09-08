@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Chat with {{ recipient.username }}</h2>
+  <div class="chat-box">
+    {% for message in messages %}
+      <div class="message{% if message.sender == user %}-sent{% endif %}">
+        <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+        <small class="timestamp">{{ message.timestamp }}</small>
+      </div>
+    {% endfor %}
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="content">Message:</label>
+      <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+  <a href="{% url 'accounts:send_message' recipient_id=recipient.id %}">Send a Message</a>
+  
+{% endblock %}

@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h2 class = "container-main" >Account Login</h2>
+
+    <form method="post" class = "container-main">
+        {{form.as_p}}
+        {% csrf_token %}
+
+    <button type="submit" class = "btn btn-primary" > Login </button>   
+   
+    </form>
+    
+
+    <p class="container-main">New User?</p>
+    <a class="container-main" href="{% url 'accounts:register' %}">Register Here</a>
+    <p></p>
+
+    
+    <a class = "container-main" href="{% url 'password_reset' %}">Forgot Password?</a>
+    
+    
+{% endblock %}
+

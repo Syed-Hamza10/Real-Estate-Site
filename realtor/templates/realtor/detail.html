@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<style>
+    .card-img {
+        max-width: 100%;
+        
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ property.main_image.url }}" class="card-img card-img-top" alt="Property Image" height = 250>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ property.title }}</h5>
+                            <p></p>
+                            <p class="card-text">{{ property.description }}</p>
+                            <p class="card-text">
+                                <strong>Area:</strong> {{ property.area }}<br>
+                                <strong>Purpose:</strong> {{ property.purpose }}<br>
+                                <strong>Price:</strong> {{ property.price }}<br>
+                                <strong>Features:</strong>
+                                <ul>
+                                    {% for feature in property.propertyfeature_set.all %}
+                                        <li><strong>{{ feature.feature_name }}:</strong> {{ feature.feature_value }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                            <a href="{% url 'realtor:home' %}" class="btn btn-primary">Back</a>
+                            <a href="{% url 'realtor:delete' property.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
