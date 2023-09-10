@@ -1,17 +1,13 @@
-
 {% extends 'base.html' %}
 
-
 {% block content %}
-
-<h1>Add a new Property</h1>
-    <form method="post" class = "container" enctype = "multipart/form-data">
-        {{form.as_p}}
+<div class="container mt-5">
+    <h3>Add a New Property</h3>
+    <form method="post" class="container" enctype="multipart/form-data">
+        {{ form.as_p }}
         {% csrf_token %}
-
-    <input type="submit" class = "btn btn-primary" value = "Submit">   
-   
+        <input type="submit" class="btn btn-primary" value="Submit">
     </form>
     <hr>
+</div>
 {% endblock %}
-

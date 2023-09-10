@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
@@ -21,7 +22,9 @@ class Property(models.Model):
         ('For Rent', 'For Rent'),
         ('For Sale','For Sale')
     ]
+    
     negotiable_choices = [('Y','YES'),('N','NO')]
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=50) 
     description = models.TextField()    
     address = models.CharField(max_length=250)

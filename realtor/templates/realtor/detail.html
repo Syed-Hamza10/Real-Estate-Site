@@ -37,6 +37,8 @@
                                 <strong>Area:</strong> {{ property.area }}<br>
                                 <strong>Purpose:</strong> {{ property.purpose }}<br>
                                 <strong>Price:</strong> {{ property.price }}<br>
+                                <strong>Contact:</strong> 051-12345678<br>
+
                                 <strong>Features:</strong>
                                 <ul>
                                     {% for feature in property.propertyfeature_set.all %}
@@ -45,8 +47,11 @@
                                 </ul>
                             </p>
                             <a href="{% url 'realtor:home' %}" class="btn btn-primary">Back</a>
+                            {% if user.is_authenticated and user == property.owner %}
                             <a href="{% url 'realtor:delete' property.id %}" class="btn btn-danger">Delete</a>
+                            {% endif %}
                         </div>
+
                     </div>
                 </div>
             </div>

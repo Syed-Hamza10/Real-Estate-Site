@@ -108,9 +108,11 @@
                 <li class="nav-item"> 
                     <a class="nav-link" href="{% url 'blog:post_list' %}">Our Blog</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item"> 
                     <a class="nav-link" href="{% url 'blog:post_new' %}">Publish Blog</a>
                 </li>
+                {% endif %}
             </ul>
                 {% if user.is_authenticated %}
                 <ul id="logged-in" class="navbar-nav ml-auto">
