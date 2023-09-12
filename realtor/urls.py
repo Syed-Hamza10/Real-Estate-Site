@@ -24,7 +24,8 @@ urlpatterns = [
     path("<int:property_id>", views.detail, name='detail'),
     path("<int:property_id>/delete", views.delete, name='delete'),
     path("contact/", views.ContactView, name='contact'),
-    path("new_property",views.NewPropertyView, name = 'new_property')
+    path("new_property",views.NewPropertyView, name = 'new_property'),
+    path('about',views.AboutView, name = 'about'),
 
     
 ]

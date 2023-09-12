@@ -58,5 +58,7 @@ def NewPropertyView(request):
         
     return render(request, 'realtor/new_property.html', {'form' : form})
 
+def AboutView(request):
+    return render(request, 'realtor/about.html')
 
 
